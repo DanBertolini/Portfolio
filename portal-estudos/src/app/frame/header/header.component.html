@@ -1,12 +1,25 @@
 <header>
   <nav class="blue">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <a uiSref="home" class="left">Logo</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li>
-          <a uiSref="hello" uiSrefActive="active">Hello</a>
+          <a uiSref="content.main_page" uiSrefActive="active">Minhas páginas</a>
+        </li>
+        <li>
+          <a uiSref="content.main_page" uiSrefActive="active">Páginas compartilhadas comigo</a>
+        </li>
+        <li>
+          <a uiSref="content.main_page" uiSrefActive="active" href="#">Páginas públicas</a>
+        </li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a (click)="openLoginDialog()" *ngIf="!isAutheticated" data-target="modal1" class="modal-trigger">Entrar</a>
+          <a (click)="logout()" *ngIf="isAutheticated">Sair</a>
         </li>
       </ul>
     </div>
   </nav>
 </header>
+<pde-login *ngIf="loginOpened" (onLoginClose)="closeLoginDialog()"></pde-login>

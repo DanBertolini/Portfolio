@@ -1,0 +1,13 @@
+.tooltip-overlay{
+    width: 100%;
+    height: 125%;
+    background-color: black;
+    opacity: 0.5;
+    position: absolute;
+    z-index: 100;
+    top: -25%;
+}
+
+body {
+    overflow: hidden;
+}

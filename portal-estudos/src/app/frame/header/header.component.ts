@@ -7,11 +7,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() menuOpened: boolean;
+  private loginOpened: boolean;
   
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openLoginDialog(){
+    this.loginOpened = true;
+  }
+
+  closeLoginDialog(){
+    this.loginOpened = false;
   }
 
 }

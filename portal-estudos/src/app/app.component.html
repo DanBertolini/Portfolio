@@ -1,4 +1,4 @@
-<pde-header [menuOpened]="menuOpened"></pde-header>
+<pde-header></pde-header>
 <pde-lateral-menu (menuToggle)="menuOpened = $event"></pde-lateral-menu>
 <div class="content" [ngClass]="{'menu-opened': menuOpened, 'menu-closed': !menuOpened}">
     <ui-view></ui-view>

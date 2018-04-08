@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader } from '@angular/core';
 import { UIRouterModule } from '@uirouter/angular';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HomeModule } from './home/home.module';
 import { FrameModule } from './frame/frame.module';
+
+import { APP_STATES } from './app.states';
 
 @NgModule({
   declarations: [
@@ -14,12 +15,13 @@ import { FrameModule } from './frame/frame.module';
   ],
   imports: [
     BrowserModule,
-    UIRouterModule,
-    AppRoutingModule,
+    UIRouterModule.forRoot({ states: APP_STATES, otherwise: { state: 'home' } }),
     HomeModule,
     FrameModule
   ],
-  providers: [],
+  providers: [
+    { provide: NgModuleFactoryLoader, useClass: SystemJsNgModuleLoader }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
