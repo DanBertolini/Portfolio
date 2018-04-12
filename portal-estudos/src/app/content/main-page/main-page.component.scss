@@ -1,0 +1,81 @@
+.page-card {
+    box-shadow: 5px 10px 8px #888888;
+    display: inline-block;
+    width: 20%;
+    border-radius: 10px;
+    .page-preview {
+        border-radius: 10px 10px 0 0;
+        height: 100px;
+        width: 100%;
+        background-color: bisque;
+        .page-icons {
+            box-shadow: 2px 2px 5px #888888;
+            color: #888888;
+            background: #eeeeee;
+            border-radius: 5px;
+            margin: 5px 5px 0px 5px;
+            float: right;
+            font-size: 20px;
+        }
+    }
+
+    .page-description {
+        padding: 5px;
+        .description-header {
+            .page-title {
+                display: inline;
+                font-family: 'Roboto Mono', monospace;
+            }
+            .page-status-group {
+                font-size: 10px;
+                float: right;
+                .page-status {
+                    .status-icon {
+                        font-size: 15px;
+                        position: relative;
+                        top: 5px;
+                        margin-left: 5px;
+                        margin-right: 2px;
+                    }
+                }
+            }
+        }
+        .description-text {
+            span {
+                font-size: 10px;
+            }
+            p {
+                font-size: 12px;
+                margin-top: 0px;
+            }
+        }
+
+        .description-tags {
+            span {
+                font-size: 10px;
+            }
+            .tag {
+                background-color: #444444;
+                color: white;
+                border-radius: 20px;
+                padding: 5px;
+            }
+        }
+
+        .description-footer {
+            .page-creation {
+                font-family: 'Quattrocento Sans';
+                font-size: 10px;
+                float: right;
+                .username {
+                    color: #aaa;
+                    .user-icon {
+                        font-size: 16px;
+                        position: relative;
+                        top: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

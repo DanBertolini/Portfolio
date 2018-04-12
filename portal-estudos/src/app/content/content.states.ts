@@ -1,45 +1,48 @@
 import { ContentComponent } from './content.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ContentPageComponent } from './content-page/content-page.component';
-import { Ng2StateDeclaration } from '@uirouter/angular';
+import { Ng2StateDeclaration, Transition } from '@uirouter/angular';
 import { MyPagesComponent } from './my-pages/my-pages.component';
 import { SharedPagesComponent } from './shared-pages/shared-pages.component';
 import { PublicPagesComponent } from './public-pages/public-pages.component';
+import { RouterStateSnapshot } from '@angular/router/src/router_state';
 
-export const CONTENT_STATE = {
+const views: any =  {
+  main_page: { component: MainPageComponent},
+  content_page: { component: ContentPageComponent }
+}
+
+const resolve = [ { token: 'pageId', deps: [Transition], resolveFn: (params: Transition) => params.params().pageId }];
+
+const urlParams = "/:type/:pageId";
+export const CONTENT_STATE: Ng2StateDeclaration = {
   name: 'content',
   url: '/content',
   component: ContentComponent
 }
 
-export const MYPAGES_STATE = {
+export const MYPAGES_STATE: Ng2StateDeclaration = {
   name: 'content.my_pages',
-  url: '/my-pages',
+  url: '/my-pages' + urlParams,
   component: MyPagesComponent,
-  views: {
-    main_page: MainPageComponent,
-    content_page: ContentPageComponent
-  }
+  resolve: resolve,
+  views: views
 }
 
-export const SHAREDPAGES_STATE = {
+export const SHAREDPAGES_STATE: Ng2StateDeclaration = {
   name: 'content.shared_pages',
-  url: '/shared-pages',
+  url: '/shared-pages' + urlParams,
   component: SharedPagesComponent,
-  views: {
-    'main_page': MainPageComponent,
-    'content_page': ContentPageComponent
-  }
+  resolve: resolve,
+  views: views
 }
 
-export const PUBLICPAGES_STATE = {
+export const PUBLICPAGES_STATE: Ng2StateDeclaration = {
   name: 'content.public_pages',
-  url: '/public-pages',
+  url: '/public-pages' + urlParams,
   component: PublicPagesComponent,
-  views: {
-    'main_page': MainPageComponent,
-    'content_page': ContentPageComponent
-  }
+  resolve: resolve,
+  views: views
 }
 
 export const CONTENT_STATES: Ng2StateDeclaration[] = [
