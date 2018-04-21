@@ -1,33 +1,43 @@
-<div class="page-card">
-  <div class="page-preview">
-    <i class="material-icons page-icons">videocam</i>
-    <i class="material-icons page-icons">image</i>
+<div class="page-cards" *ngIf="pages.lenght > 0">
+  <div class="page-card" *ngFor="let page of pages">
+    <div class="page-preview">
+      <i class="material-icons page-icons" *ngIf="page.hasVideo">videocam</i>
+      <i class="material-icons page-icons" *ngIf="page.hasImage">image</i>
+    </div>
+    <div class="page-description">
+      <div class="description-header">
+        <h6 class="page-title">{{page.title}}</h6>
+        <span class="page-status-group">
+          <span class="page-status" *ngIf="!page.liked">
+            <i class="material-icons status-icon like">favorite_border</i>{{page.likes}}</span>
+          <span class="page-status" *ngIf="page.liked">
+            <i class="material-icons status-icon like">favorite</i>{{page.likes}}</span>
+          <span class="page-status">
+            <i class="material-icons status-icon">insert_comment</i>{{page.comments.lenght}}</span>
+        </span>
+      </div>
+      <div class="description-text">
+        <span>Descrição:</span>
+        <p>{{page.description | linesManager: 4: 44}}
+        </p>
+      </div>
+      <div class="description-tags">
+        <span>Tags:</span>
+        <br/>
+        <span class="tag" *ngFor="let tag of page.tags">{{tag}}</span>
+      </div>
+      <div class="description-footer">
+        <span class="page-creation">
+          Criado por
+          <span class="username">
+            <i class="material-icons user-icon">person</i>{{page.author}}</span>
+          em {{page.createDate}}</span>
+      </div>
+    </div>
   </div>
-  <div class="page-description">
-    <div class="description-header">
-      <h6 class="page-title">Titulo Página</h6>
-      <span class="page-status-group">
-        <span class="page-status">
-          <i class="material-icons status-icon">favorite_border</i>0</span>
-        <span class="page-status">
-          <i class="material-icons status-icon">insert_comment</i>0</span>
-      </span>
-    </div>
-    <div class="description-text">
-      <span>Descrição:</span>
-      <p>Breve descrição sobre a página que não pode ultrapassar 3 linhas</p>
-    </div>
-    <div class="description-tags">
-      <span>Tags:</span>
-      <br/>
-      <span class="tag">Geometria</span>
-    </div>
-    <div class="description-footer">
-      <span class="page-creation">
-        Criado por
-        <span class="username">
-          <i class="material-icons user-icon">person</i>Daniel Bertolini</span>
-        em 99/99/9999</span>
-    </div>
-  </div>
+</div>
+<div *ngIf="pages.length === 0" class="empty-list">
+  <i class="material-icons add-page" (click)="createNew()" *ngIf="newEnabled">note_add</i>
+  <br/>
+  <span>Lista de páginas vazia</span>
 </div>

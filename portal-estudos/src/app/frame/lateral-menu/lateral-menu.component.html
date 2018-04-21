@@ -1,4 +1,4 @@
-<div id="sideNav" [ngClass]="{'opened': isMenuOpened, 'closed': !isMenuOpened}">
+<div id="sideNav" [ngClass]="{'opened': isMenuOpened, 'closed': !isMenuOpened}" *ngIf="false">
   <div>
     <i class="material-icons menu-icon" (click)="openMenu()" *ngIf="!isMenuOpened">menu</i>
     <i class="material-icons menu-icon" (click)="closeMenu()" *ngIf="isMenuOpened">close</i>

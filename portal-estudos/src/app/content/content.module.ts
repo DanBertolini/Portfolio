@@ -7,15 +7,15 @@ import { ContentPageComponent } from './content-page/content-page.component';
 import { ContentComponent } from './content.component';
 
 import { CONTENT_STATES } from './content.states';
-import { MyPagesComponent } from './my-pages/my-pages.component';
-import { SharedPagesComponent } from './shared-pages/shared-pages.component';
-import { PublicPagesComponent } from './public-pages/public-pages.component';
+import { SharedModule } from '../shared/shared.module';
+import { EditContentComponent } from './edit-content/edit-content.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     UIRouterModule.forChild({ states: CONTENT_STATES })
   ],
-  declarations: [MainPageComponent, ContentPageComponent, ContentComponent, MyPagesComponent, SharedPagesComponent, PublicPagesComponent]
+  declarations: [MainPageComponent, ContentPageComponent, ContentComponent, EditContentComponent]
 })
 export class ContentModule { }

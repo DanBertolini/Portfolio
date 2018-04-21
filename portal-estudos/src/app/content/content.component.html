@@ -1,2 +1,3 @@
 <ui-view></ui-view>
-<div [ui-view]='currentView'></div>
+<div ui-view='main_page' [hidden]="currentView !== 'main_page'"></div>
+<div ui-view='content_page' [hidden]="currentView !== 'content_page'"></div>
