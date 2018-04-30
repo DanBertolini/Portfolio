@@ -1,6 +1,49 @@
-<div class="row">
-  <div class="input-field col s4">
-    <input id="first_name" type="text">
-    <label for="first_name">Título da Página</label>
+<div class="page-content">
+  <div class="column">
+    <div class="title">
+      <div class="input-field col s4">
+        <input id="page_name" type="text">
+        <label for="page_name">Título da Página</label>
+      </div>
+    </div>
+    <ng-container *ngFor="let content of columns[0].contents">
+        <ng-container *ngTemplateOutlet="inputView; context: { columnIndex: 0, content: content.content}"></ng-container>
+    </ng-container>
+    <div class="content col s4" [class.active]="isActive(0)">
+      <span (click)="setAsActive(0)">Clique para adicionar texto</span>
+      <div *ngIf="isActive(0)">
+        <ng-container *ngTemplateOutlet="input; context: { columnIndex: 0}"></ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <ng-container *ngFor="let content of columns[1].contents">
+        <ng-container *ngTemplateOutlet="inputView; context: { columnIndex: 1, content: content.content}"></ng-container>
+    </ng-container>
+    <div class="content col s4" [class.active]="isActive(1)">
+      <span (click)="setAsActive(1)">Clique para adicionar texto</span>
+      <div *ngIf="isActive(1)">
+        <ng-container *ngTemplateOutlet="input; context: { columnIndex: 1}"></ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <ng-container *ngFor="let content of columns[2].contents">
+        <ng-container *ngTemplateOutlet="inputView; context: { columnIndex: 2, content: content.content}"></ng-container>
+    </ng-container>
+    <div class="content col s4" [class.active]="isActive(2)">
+      <span (click)="setAsActive(2)">Clique para adicionar texto</span>
+      <div *ngIf="isActive(2)">
+        <ng-container *ngTemplateOutlet="input; context: { columnIndex: 2}"></ng-container>
+      </div>
+    </div>
   </div>
 </div>
+
+<ng-template #input let-column="columnIndex">
+  <text-feature-edit (onSave)="onInputDone(column, $event)"></text-feature-edit>
+</ng-template>
+
+<ng-template #inputView let-column="columnIndex" let-content="content">
+    <text-feature-view [content]="content"></text-feature-view>
+</ng-template>

@@ -1,0 +1,3 @@
+<textarea class="materialize-textarea content-feature" #text (blur)="onInputDone(text.value)" 
+    (keydown)="$event.keyCode === 13 ? onInputDone(text.value): ''">
+</textarea>
